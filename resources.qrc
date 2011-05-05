@@ -1,0 +1,27 @@
+<RCC>
+    <qresource prefix="/qml">
+        <file>images/backtab.png</file>
+        <file>images/cosecante.png</file>
+        <file>images/coseno.png</file>
+        <file>images/cotangente.png</file>
+        <file>images/ejercicios.png</file>
+        <file>images/graficar.png</file>
+        <file>images/hugetab.png</file>
+        <file>images/maintab.png</file>
+        <file>images/maintab3.png</file>
+        <file>images/secante_.png</file>
+        <file>images/seno.png</file>
+        <file>images/slider.png</file>
+        <file>images/subtab.png</file>
+        <file>images/subtab3.png</file>
+        <file>images/tab.png</file>
+        <file>images/tangente.png</file>
+        <file>images/teoria.png</file>
+        <file>tab3.qml</file>
+        <file>tabFunc.qml</file>
+    </qresource>
+    <qresource prefix="/extra">
+        <file>images/textoGraficarFunciones.png</file>
+        <file>images/textoEjercicios.png</file>
+    </qresource>
+</RCC>
