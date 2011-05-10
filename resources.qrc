@@ -24,4 +24,13 @@
         <file>images/textoGraficarFunciones.png</file>
         <file>images/textoEjercicios.png</file>
     </qresource>
+    <qresource prefix="/triang">
+        <file>images/triangulo.svg</file>
+        <file>images/cos.png</file>
+        <file>images/sec.png</file>
+        <file>images/cot.png</file>
+        <file>images/sin.png</file>
+        <file>images/tan.png</file>
+        <file>images/csc.png</file>
+    </qresource>
 </RCC>
