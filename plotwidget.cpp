@@ -3,10 +3,16 @@
 #include <QPainter>
 #include <math.h>
 #include <QDebug>
+#include <QTimer>
 #include "function.h"
 PlotWidget::PlotWidget(QWidget *parent) :
     QWidget(parent)
+  , m_functionName("sin")
   , m_function(new Function())
+  , m_handlePos (QPointF(0.0, 0.0))
+  , m_timer(new QTimer(this))
+  , m_plotGranularity(0.1)
+  , m_graphPortion(0.0)
 {
     setMouseTracking(true); // receive mouse moves at all times
     m_dotPen.setStyle(Qt::DotLine); // dotted line
@@ -24,17 +30,16 @@ void PlotWidget::paintEvent(QPaintEvent* ){
 
     // Draw the mouse-tracking circle
     if (!m_functionName.isEmpty()){
-        QPointF point = QPointF(m_handlePos,
-                                m_function->calculate(m_functionName, m_handlePos));
-        painter.drawEllipse(point, 0.05,0.05);
+        painter.drawEllipse(m_handlePos, 0.05,0.05);
         painter.setPen(m_dotPen);
-        painter.drawLine(point, QPointF(point.x(), 0));
+        painter.drawLine(m_handlePos, QPointF(m_handlePos.x(), 0.0));
     }
 }
 void PlotWidget::mouseMoveEvent(QMouseEvent *event){
     // Mouse is not mapped to painter, map it by hand
-    m_handlePos = -5 + event->posF().x()*10.0/this->width();
-    emit value(m_handlePos, m_function->calculate(m_functionName, m_handlePos));
+    m_handlePos.setX( -5 + event->posF().x()*10.0/this->width());
+    m_handlePos.setY( m_function->calculate(m_functionName, m_handlePos.x()));
+    emit value(m_handlePos.x(), m_function->calculate(m_functionName, m_handlePos.y()));
     update(); // request repaint
 }
 void PlotWidget::recalculate(QString f){
@@ -43,8 +48,13 @@ void PlotWidget::recalculate(QString f){
         return;
     }
     m_functionName = f;
+    double norm;
+    QPointF diff;
+    QPointF point;
     for (float t=-5; t<5; t=t+0.1){
-        m_points << QPointF(t, m_function->calculate(f, t));
+        point = QPointF(t, m_function->calculate(f, t));
+        diff = m_points.last() - point;
+        m_points << point;
     }
     update(); // request repaint
 }
@@ -70,4 +80,6 @@ void PlotWidget::drawAxis(QPainter *p){
     for (float t=-5.0; t<5.0; t=t+1 ){
         p->drawLine(QPointF(-dx*2, t), QPointF(dx*2, t));
     }
+}
+void PlotWidget::slotTick(){
 }

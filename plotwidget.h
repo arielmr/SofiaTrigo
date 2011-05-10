@@ -8,7 +8,7 @@ class PlotWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit PlotWidget(QWidget *parent = 0);
+    explicit PlotWidget(QWidget *parent = 0);    
 protected:
     void paintEvent(QPaintEvent *event);
     void mouseMoveEvent(QMouseEvent *);
@@ -17,12 +17,18 @@ signals:
     void value(double x, double y);
 public slots:
     void recalculate(QString f);
+private slots:
+    void slotTick();
 private:
     QString         m_functionName;
     QPolygonF       m_points;
+    QPolygonF       m_pointsPlotted;
     Function*       m_function;
-    double          m_handlePos;
+    QPointF         m_handlePos;
     QPen            m_dotPen;
+    QTimer*         m_timer;
+    double          m_plotGranularity;
+    float           m_graphPortion;
 };
 
 #endif // PLOTWIDGET_H

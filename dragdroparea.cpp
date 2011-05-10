@@ -1,27 +1,19 @@
 #include "dragdroparea.h"
 #include <QDragEnterEvent>
 #include <QLabel>
+#include <QDebug>
 DragDropArea::DragDropArea(QWidget *parent) :
     QWidget(parent)
 {
-}
-void DragDropArea::dragEnterEvent(QDragEnterEvent *event)
-{
-    if (event->mimeData()->hasText()) {
-        if (event->source() == this) {
-            event->setDropAction(Qt::MoveAction);
-            event->accept();
-        } else {
-            event->acceptProposedAction();
-        }
-    } else {
-        event->ignore();
-    }
 }
 void DragDropArea::mousePressEvent(QMouseEvent *event)
 {
     QLabel *child = static_cast<QLabel*>(childAt(event->pos()));
     if (!child)
+        return;
+
+    // Only drag children with dynamic property: "drag"
+    if (!child->property("drag").toBool())
         return;
 
     QPoint hotSpot = event->pos() - child->pos();
@@ -39,9 +31,5 @@ void DragDropArea::mousePressEvent(QMouseEvent *event)
     drag->setMimeData(mimeData);
     drag->setPixmap(pixmap);
     drag->setHotSpot(hotSpot);
-
-    Qt::DropAction dropAction = drag->exec(Qt::CopyAction | Qt::MoveAction, Qt::CopyAction);
-
-    if (dropAction == Qt::MoveAction)
-        child->close();
+    drag->exec();
 }

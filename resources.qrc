@@ -32,5 +32,8 @@
         <file>images/sin.png</file>
         <file>images/tan.png</file>
         <file>images/csc.png</file>
+        <file>images/bar1.png</file>
+        <file>images/ok.svg</file>
+        <file>images/x.svg</file>
     </qresource>
 </RCC>

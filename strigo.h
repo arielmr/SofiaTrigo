@@ -19,11 +19,14 @@ public slots:
     void slotShowExercise();
     void slotShowPlot();
     void slotShowValues(double x, double y);
+    void slotSwitchFunction(QString func);
+    void slotValidateFunctionFrac();
 protected:
     QDeclarativeView*   m_qmlTab3;
     QDeclarativeView*   m_qmlTabFuncs;
 private:
     Ui::Widget *ui;
+    QString             m_currentFunction;
 };
 
 #endif // STRIGO_H
