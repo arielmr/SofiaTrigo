@@ -24,6 +24,13 @@ public slots:
 protected:
     QDeclarativeView*   m_qmlTab3;
     QDeclarativeView*   m_qmlTabFuncs;
+private slots:
+    void on_Asl_valueChanged(int value);
+
+    void on_Bsl_valueChanged(int value);
+
+    void on_Csl_valueChanged(int value);
+
 private:
     Ui::Widget *ui;
     QString             m_currentFunction;

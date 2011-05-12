@@ -44,7 +44,7 @@
        <enum>QFrame::Panel</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="teoria">
        <property name="sizePolicy">
@@ -347,6 +347,174 @@ Opuesto</string>
         </property>
         <property name="text">
          <string/>
+        </property>
+       </widget>
+       <widget class="QSlider" name="Asl">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>80</y>
+          <width>381</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="minimum">
+         <number>-300</number>
+        </property>
+        <property name="maximum">
+         <number>400</number>
+        </property>
+        <property name="value">
+         <number>100</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QSlider" name="Bsl">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>110</y>
+          <width>381</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="minimum">
+         <number>-800</number>
+        </property>
+        <property name="maximum">
+         <number>800</number>
+        </property>
+        <property name="sliderPosition">
+         <number>100</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QSlider" name="Csl">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>140</y>
+          <width>381</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="minimum">
+         <number>-600</number>
+        </property>
+        <property name="maximum">
+         <number>600</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>80</y>
+          <width>16</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>A</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>110</y>
+          <width>16</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>B</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>140</y>
+          <width>16</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>C</string>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="Asp">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>80</y>
+          <width>62</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+        <property name="minimum">
+         <double>-200.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>200.000000000000000</double>
+        </property>
+        <property name="value">
+         <double>1.000000000000000</double>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="Bsp">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>110</y>
+          <width>62</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+        <property name="minimum">
+         <double>-200.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>200.000000000000000</double>
+        </property>
+        <property name="value">
+         <double>1.000000000000000</double>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="Csp">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>140</y>
+          <width>62</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+        <property name="minimum">
+         <double>-200.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>200.000000000000000</double>
+        </property>
+        <property name="value">
+         <double>0.000000000000000</double>
         </property>
        </widget>
       </widget>

@@ -18,9 +18,9 @@ public:
         m_funcs.insert("sec", this->sec);
         m_funcs.insert("csc", this->csc);
     }
-    double calculate(QString func, double param){
+    double calculate(QString func, double x, double a=1.0, double b=1.0, double c=0.0 ){
         if (m_funcs.contains(func))
-            return m_funcs[func](param);
+            return a*m_funcs[func](b*x+c);
         else
             return 0.0;
     }

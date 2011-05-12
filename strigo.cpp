@@ -113,3 +113,22 @@ void Widget::slotValidateFunctionFrac(){
     else
         ui->m_evaluation->setPixmap(QPixmap(":/triang/images/x.svg"));
 }
+
+void Widget::on_Asl_valueChanged(int value)
+{
+    ui->Asp->setValue(double(value)/100.0);
+    ui->plotter->recalculate(m_currentFunction, ui->Asp->value(), ui->Bsp->value(), ui->Csp->value());
+}
+
+void Widget::on_Bsl_valueChanged(int value)
+{
+    ui->Bsp->setValue(double(value)/100.0);
+    ui->plotter->recalculate(m_currentFunction, ui->Asp->value(), ui->Bsp->value(), ui->Csp->value());
+
+}
+
+void Widget::on_Csl_valueChanged(int value)
+{
+    ui->Csp->setValue(double(value)/100.0);
+    ui->plotter->recalculate(m_currentFunction, ui->Asp->value(), ui->Bsp->value(), ui->Csp->value());
+}

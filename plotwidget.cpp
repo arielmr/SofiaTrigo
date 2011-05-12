@@ -16,6 +16,7 @@ PlotWidget::PlotWidget(QWidget *parent) :
 {
     setMouseTracking(true); // receive mouse moves at all times
     m_dotPen.setStyle(Qt::DotLine); // dotted line
+    m_points << QPointF(0,0);
 }
 void PlotWidget::paintEvent(QPaintEvent* ){
     QPainter painter(this);
@@ -38,24 +39,29 @@ void PlotWidget::paintEvent(QPaintEvent* ){
 void PlotWidget::mouseMoveEvent(QMouseEvent *event){
     // Mouse is not mapped to painter, map it by hand
     m_handlePos.setX( -5 + event->posF().x()*10.0/this->width());
-    m_handlePos.setY( m_function->calculate(m_functionName, m_handlePos.x()));
-    emit value(m_handlePos.x(), m_function->calculate(m_functionName, m_handlePos.y()));
+    m_handlePos.setY( m_function->calculate(m_functionName, m_handlePos.x(), m_A, m_B, m_C));
+    emit value(m_handlePos.x(), m_function->calculate(m_functionName, m_handlePos.y(), m_A, m_B, m_C));
     update(); // request repaint
 }
-void PlotWidget::recalculate(QString f){
+void PlotWidget::recalculate(QString f, float A, float B, float C){
     m_points.clear();
     if (!m_function){
         return;
     }
     m_functionName = f;
-    double norm;
+    //double norm;
     QPointF diff;
     QPointF point;
-    for (float t=-5; t<5; t=t+0.1){
-        point = QPointF(t, m_function->calculate(f, t));
+    for (float t=-5; t<5; t=t+0.01){
+        point = QPointF(t, m_function->calculate(f, t, A, B, C));
         diff = m_points.last() - point;
         m_points << point;
     }
+    m_A = A;
+    m_B = B;
+    m_C = C;
+    m_handlePos.setX(0.0);
+    m_handlePos.setY(0.0);
     update(); // request repaint
 }
 
